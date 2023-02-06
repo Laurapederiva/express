@@ -48,11 +48,34 @@ const postUser = (req, res) => {
     res.redirect("/users");
 }
 
+const userEdit = (req, res) => {
+    const { id} = req.params;
+
+    const userEdit = users.find( elem=> elem.id == id);
+    res.render(path.join(__dirname, "../views/userEdit"), {userEdit});
+
+};
+
+const editConfirm = (req, res) => {
+    user.forEach(eleme => {
+        if(elem.id == req.body.id){
+            elem.name = req.body.name;
+            elem.age= req.body.age;
+            elem.img = req.body.img;
+        }
+        
+    });
+
+};
+
+res.redirect("/users");
+
 module.exports = {
     getAllUsers,
     getUserId,
     search,
     forNewUser,
     postUser,
-    
+    userEdit,
+    editConfirm,
 };

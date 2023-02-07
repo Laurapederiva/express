@@ -13,8 +13,8 @@
     <ul>
         <% for(let i=0; i< allUsers.length; i++) {%>
         <li>
-            <article>
-                <img src="<%= allUsers[i].img %>" alt="">
+            <article class="card">
+                <img src="<%= allUsers[i].img %>" alt="" width="200px" height="200px">
                 <p>
                     <a href="/user/<%= allUsers[i].id %>">
                       Name: <%= allUsers[i].name %>  

@@ -34,6 +34,11 @@ const postUser = (req, res) => {
         age,
         img
     } = req.body
+    const image= req.file ? req.file.filename : "";
+    let newImage;
+    if(image.length> 0){
+        newImage=`images/usuarios/${image}`;
+    }
 
     const newId = users[users.length -1].id + 1;
 
@@ -41,12 +46,12 @@ const postUser = (req, res) => {
         id: newId,
         name,
         age,
-        img
-    }
+        img: newImage
+    };
 
     users.push(obj);
     res.redirect("/users");
-}
+};
 
 const userEdit = (req, res) => {
     const { id} = req.params;
@@ -65,10 +70,11 @@ const editConfirm = (req, res) => {
         }
         
     });
+    res.redirect("/users");
 
 };
 
-res.redirect("/users");
+
 
 module.exports = {
     getAllUsers,
